@@ -1,0 +1,96 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Bytecache - DNS Query Tool</title>
+    <meta name="description" content="Bytecache.net DNS Query Tool">
+    <meta name="author" content="Bytecache.net">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <style>
+        textarea.form-control {
+            height: 750px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <form class="needs-validation" action="http://localhost:5000/" method="POST" novalidate>
+                    <div class="form-group">
+                        <fieldset>
+                            <legend>DNS Query</legend>
+                           
+                            <input name="hostname" type="hostname" class="form-control" placeholder="google.com" id="validationCustom01" required>
+                            <div class="invalid-feedback">
+                                Please provide a hostname
+                            </div>
+                            <input name="name_server" type="name_server" class="form-control" placeholder="8.8.8.8">
+                            <select name="record_type" class="form-control" >
+                                <option>A</option>
+                                <option>ANY</option>
+                                <option>CNAME</option>
+                                <option>MX</option>
+                                <option>NS</option>
+                                <option>SOA</option>
+                                <option>SRV</option>
+                                <option>TXT</option>
+                            </select>
+                                
+                            <button type="submit" class="btn btn-primary">Query</button>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form class="pure-form pure-form-stacked">
+                    <div class="form-group">
+                        <fieldset>
+                            <legend>Query Results</legend>
+                                        
+                            <textarea class="form-control" placeholder="Query results will appear here.">{{ result }}</textarea>
+                                        
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
