@@ -3,16 +3,6 @@ import os
 import subprocess
 import sys
 
-#############################################################################################
-#
-# To-Do
-# - Validate host input (Required)
-# - Validate name server input (Default)
-# - Validate record type input (Accepted)
-# X Build web interface
-# X Fix issue with non-responsive resolver
-#############################################################################################
-
 
 app = Flask(__name__)
 
